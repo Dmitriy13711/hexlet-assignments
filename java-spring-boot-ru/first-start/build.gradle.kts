@@ -2,8 +2,11 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
+    java
+    id("org.springframework.boot") version "3.2.2"
+    id("io.spring.dependency-management") version "1.1.3"
     // BEGIN
-    
+
     // END
     application
     id("com.github.ben-manes.versions") version "0.48.0"
@@ -19,11 +22,14 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    // BEGIN
-    
-    // END
+dependencies {implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    // BEGIN
+
+    // END
+
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
     testImplementation("org.hamcrest:hamcrest:2.2")
